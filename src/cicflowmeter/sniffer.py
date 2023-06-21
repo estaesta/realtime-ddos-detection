@@ -70,6 +70,15 @@ def main():
         help="URL endpoint for send to Machine Learning Model. e.g http://0.0.0.0:80/prediction",
     )
 
+    url_model = parser.add_mutually_exclusive_group(required=False)
+    url_model.add_argument(
+        "-d",
+        "--duration",
+        action="store",
+        dest="duration",
+        help="duration",
+    )
+
     parser.add_argument(
         "output",
         help="output file name (in flow mode) or directory (in sequence mode)",
@@ -86,12 +95,22 @@ def main():
     )
     sniffer.start()
 
-    try:
-        sniffer.join()
-    except KeyboardInterrupt:
-        sniffer.stop()
-    finally:
-        sniffer.join()
+    # try:
+    #     sniffer.join()
+    # except KeyboardInterrupt:
+    #     sniffer.stop()
+    # finally:
+    #     sniffer.join()
+
+    start_time = time.time()
+    duration = int(args.duration)
+    while True:
+        if time.time() - start_time >= duration:
+            break
+        time.sleep(1)
+
+    sniffer.stop()
+    sniffer.join()
 
 
 if __name__ == "__main__":

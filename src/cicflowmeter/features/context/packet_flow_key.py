@@ -46,4 +46,5 @@ def get_packet_flow_key(packet, direction) -> tuple:
         src_port = packet[protocol].dport
         dest_port = packet[protocol].sport
 
-    return dest_ip, src_ip, src_port, dest_port, src_mac, dest_mac
+    # return dest_ip, src_ip, src_port, dest_port, src_mac, dest_mac
+    return dest_ip, src_ip, src_port, dest_port
