@@ -4,15 +4,26 @@
 
 
 ### Installation
+* webserver
 ```sh
 git clone https://github.com/estaesta/realtime-ddos-detection
 cd realtime-ddos-detection
 python3 setup.py install
 ```
+* ml server
+```sh
+git clone https://github.com/estaesta/realtime-ddos-detection
+```
 
 ### Usage
+* webserver
 ```sh
 usage: sudo python3 detector.py ml_endpoint
+```
+* ml server
+```sh
+cd realtime-ddos-detection
+flask -A webapp.py run
 ```
 
 - Reference: https://www.unb.ca/cic/research/applications.html#CICFlowMeter
