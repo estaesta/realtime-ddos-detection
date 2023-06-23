@@ -1,4 +1,5 @@
 import argparse
+import time
 
 from scapy.sendrecv import AsyncSniffer
 
