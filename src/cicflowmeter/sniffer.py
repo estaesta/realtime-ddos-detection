@@ -78,6 +78,7 @@ def main():
         action="store",
         dest="duration",
         help="duration",
+        default=0,
     )
 
     parser.add_argument(
@@ -105,13 +106,21 @@ def main():
 
     start_time = time.time()
     duration = int(args.duration)
-    while True:
-        if time.time() - start_time >= duration:
-            break
-        time.sleep(1)
+    if duration == 0:
+        try:
+            sniffer.join()
+        except KeyboardInterrupt:
+            sniffer.stop()
+        finally:
+            sniffer.join()
+    else:
+        while True:
+            if time.time() - start_time >= duration:
+                break
+            time.sleep(1)
 
-    sniffer.stop()
-    sniffer.join()
+        sniffer.stop()
+        sniffer.join()
 
 
 if __name__ == "__main__":
