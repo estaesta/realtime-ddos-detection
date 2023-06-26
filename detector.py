@@ -15,7 +15,7 @@ def run_script():
     flag = True
     while flag:
         # Run the command
-        command = f"sudo env/bin/cicflowmeter -i enp0s8 -c -d 10  output.csv"
+        command = f"sudo cicflowmeter -i enp0s8 -c -d 1  output.csv"
         process = subprocess.Popen(command, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
         process.wait()
@@ -26,7 +26,7 @@ def run_script():
         thread.start()
 
         #repeat for output2
-        command = f"sudo env/bin/cicflowmeter -i enp0s8 -c -d 10 output2.csv"
+        command = f"sudo cicflowmeter -i enp0s8 -c -d 1 output2.csv"
         process = subprocess.Popen(command, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
         process.wait()
